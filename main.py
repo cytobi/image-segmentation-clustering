@@ -14,8 +14,14 @@ n_cluster_max = 9
 # logging
 logging.basicConfig(level=logging.INFO)
 
+# find image
+all_img = os.listdir("img")
+all_img = [img.split(".")[0] for img in all_img]
+all_img = sorted(all_img, key=str.lower)
+img_name = all_img[0]
+logging.info(f"Image name: {img_name}")
+
 # load image
-img_name = "nattu-adnan-vvHRdOwqHcg-unsplash"
 image = cv2.imread(f"img/{img_name}.jpg")
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 logging.info(f"Image shape: {image.shape}")
